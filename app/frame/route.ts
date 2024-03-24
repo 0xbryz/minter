@@ -24,12 +24,14 @@ export async function GET(req: NextRequest, res: NextResponse) {
 }
 
 export async function POST(req: NextRequest, res: NextResponse) {
+  console.log("🔴");
   const body = await req.json();
   const fid = body.untrustedData.fid;
   const address = await getConnectedAddressForUser(fid);
   const balance = await balanceOf(address);
   console.log(balance);
   if (typeof balance === "number" && balance !== null && balance < 1) {
+    console.log("$$ ", balance);
     try {
       const mint = await mintNft(address);
       console.log(mint);

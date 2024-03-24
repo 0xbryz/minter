@@ -18,6 +18,7 @@ const walletClient = createWalletClient({
 });
 
 export async function mintNft(toAddress: string) {
+  console.log("🔵");
   try {
     const { request }: any = await publicClient.simulateContract({
       account,
